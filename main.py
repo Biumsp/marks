@@ -4,8 +4,6 @@ from telegram import ParseMode
 from dispatcher_setup import bot, dispatcher, MyUpdate
 from logging_setup import logger
 
-TELEGRAM_TOKEN = environ["TELEGRAM_TOKEN"]
-
 
 def marks(request):
     """Responds to any HTTP request.
