@@ -5,9 +5,9 @@ from httplogging import HttpHandler
 
 # Settings -------------------------------------------------------------------------
 
-LOGBOT_USERNAME = environ["LOGBOT_USERNAME"]    # 
-LOGBOT_PASSWORD = environ["LOGBOT_PASSWORD"]    # 61occu92p4dr
-TELEGRAM_CHATID = environ["TELEGRAM_CHATID"]    # -750548331
+LOGBOT_USERNAME = environ["LOGBOT_USERNAME"]
+LOGBOT_PASSWORD = environ["LOGBOT_PASSWORD"]
+TELEGRAM_CHATID = environ["TELEGRAM_CHATID"]  
 
 APPNAME = "Marks"
 LOGURL  = "https://us-central1-logbot-336012.cloudfunctions.net/log_bot"
