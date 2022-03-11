@@ -5,7 +5,6 @@ from dispatcher_setup import bot, dispatcher
 from my_update import MyUpdate
 from logging_setup import logger
 
-
 def marks(request):
     """Responds to any HTTP request.
     Args:
@@ -17,6 +16,8 @@ def marks(request):
     """
 
     if request.method == "POST":
+
+        logger.critical("Fake Error")
 
         try:
             request_json = request.get_json(force=True)
