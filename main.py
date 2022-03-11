@@ -17,8 +17,6 @@ def marks(request):
 
     if request.method == "POST":
 
-        logger.critical("Fake Error")
-
         try:
             request_json = request.get_json(force=True)
 
@@ -30,7 +28,7 @@ def marks(request):
             return "200"
 
         except:
-            logger.critical("400 Bad Request:\n"+str(request_json))
+            logger.critical("400 Bad Request")
             return "400"
                     
     return "The bot is active"
