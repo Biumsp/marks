@@ -5,7 +5,7 @@ from telegram.ext import Dispatcher
 class MyDispatcher(Dispatcher):
 
     def __init__(self, *args, enable_private_messages=True, **kwargs):
-        self.enable_private_messages = private_messages
+        self.enable_private_messages = enable_private_messages
         super().__init__(*args, **kwargs)   
 
 
