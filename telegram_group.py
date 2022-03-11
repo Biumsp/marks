@@ -13,9 +13,6 @@ class Telegram_Group():
 
 
     def __getitem__(self, key: str):
-        assert (isinstance(key, str),
-                f"expected str, got: {type(key)}")
-
         for m in self.members:
             if m == key:
                 return m
