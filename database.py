@@ -9,12 +9,18 @@ class Database:
     def __init__(self, bucket_name, file_name):
         self.bucket_name = bucket_name
         self.file_name   = file_name
-        
 
-    def read():
+
+    def read(default_write=False):
         client = storage.Client()
         bucket = client.bucket(self.bucket_name)
-        blob   = bucket.blob(self.file_name)
+
+        try:
+            blob   = bucket.blob(self.file_name)
+        except:
+            if default_write:
+                self.write({})
+            return None
 
         content   : bytes = blob.download_as_bytes()
         data_str  : str   = content.decode("utf-8") 
