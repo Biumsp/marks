@@ -1,7 +1,8 @@
 from os import environ
 from telegram import Bot
 from telegram import ParseMode
-from dispatcher_setup import bot, dispatcher, MyUpdate
+from dispatcher_setup import bot, dispatcher
+from my_update import MyUpdate
 from logging_setup import logger
 
 
@@ -21,7 +22,10 @@ def marks(request):
             request_json = request.get_json(force=True)
 
             update = MyUpdate.de_json(request_json, bot)
+            update.create_class()
+
             dispatcher.process_update(update)
+
             return "200"
 
         except:
