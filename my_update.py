@@ -1,4 +1,5 @@
 from telegram import Update
+from telegram_group import Telegram_Group
 from os import environ
 
 THIS_BOT_ID = environ["THIS_BOT_ID"]
