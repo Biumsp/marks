@@ -13,7 +13,6 @@ class MyUpdate():
             self.update.effective_chat.id = str(self.update.effective_chat.id)
         if self.update.message.from_user.id:
             self.update.message.from_user.id = str(self.update.message.from_user.id)
-        return self.update
 
 
     def __getattr__(self, attr):
