@@ -1,5 +1,5 @@
 from os import environ
-from telegram import Bot
+from telegram import Bot, Update
 from telegram import ParseMode
 from dispatcher_setup import bot, dispatcher
 from my_update import MyUpdate
@@ -17,18 +17,19 @@ def marks(request):
 
     if request.method == "POST":
 
-        try:
-            request_json = request.get_json(force=True)
+        # try:
+        request_json = request.get_json(force=True)
+        
+        update = Update.de_json(request_json, bot)
+        update = MyUpdate(update)
+        update.create_class()
 
-            update = MyUpdate.de_json(request_json, bot)
-            update.create_class()
+        dispatcher.process_update(update)
 
-            dispatcher.process_update(update)
+        return "200"
 
-            return "200"
-
-        except:
-            logger.critical("400 Bad Request")
-            return "400"
+        # except:
+        #     logger.critical("400 Bad Request:")
+        #     return "400"
                     
     return "The bot is active"

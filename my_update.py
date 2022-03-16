@@ -3,32 +3,35 @@ from os import environ
 
 THIS_BOT_ID = environ["THIS_BOT_ID"]
 
-class MyUpdate(Update):
+class MyUpdate():
+
+    def __init__(self, update: Update):
+        self.update = update
+        self.chat_id = self.effective_chat.id
+
+        if self.update.effective_chat.id:
+            self.update.effective_chat.id = str(self.update.effective_chat.id)
+        if self.update.message.from_user.id:
+            self.update.message.from_user.id = str(self.update.message.from_user.id)
+        return self.update
+
+
+    def __getattr__(self, attr):
+        return getattr(self.update, attr)
+
 
     def create_class(self):
-        chat_id = self.effective_chat.id
         self.private_chat = self._is_private_chat()
 
-        self.class_ = Telegram_Group(chat_id)
+        self.class_ = Telegram_Group(self.chat_id)
         if update.is_joined_chat():
             self.class_.read(default_write=True)
         else:
             self.class_.read()
 
 
-    def de_json(request, bot):
-        update = Update.de_json(request, bot)
-        update.__class__ = MyUpdate
-
-        if update.effective_chat.id:
-            update.effective_chat.id = str(update.effective_chat.id)
-        if update.message.from_user.id:
-            update.message.from_user.id = str(update.message.from_user.id)
-        return update
-
-
     def _is_private_chat(self):
-        return int(chat_id)>0
+        return int(self.chat_id)>0
 
     
     def is_joined_chat(self):
